@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import './App.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { BattleField } from './main';
+import { Field } from './getField';
+import { createPopulation } from './getPopulation';
+import { passDay } from './passDay';
 
 function App() {
 
@@ -54,9 +56,20 @@ function App() {
 
   const [day, setDay] = useState(1);
 
+  const [population, setPopulation] = useState(createPopulation(x, y, karasCount, shchukaCount));
+
   const nextDay = () => {
     setDay(day + 1);
+    console.log(population);
+    const temp = passDay(population);
+    setPopulation(temp);
   }
+
+  Field(x, y, population);
+
+
+
+
 
   return (
     <div className="App">
@@ -76,9 +89,6 @@ function App() {
           New Day!
         </Button>
         day {day}
-      </div>
-      <div className='net'>
-        <BattleField props={[x, y, karasCount, karasOld, karasReproduct, shchukaCount, shchukaOld, shchukaReproduct, shchukaDied]} />
       </div>
     </div>
   );

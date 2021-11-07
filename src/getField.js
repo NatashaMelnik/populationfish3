@@ -10,10 +10,10 @@ export const Field = (x, y, population) => {
             const field = document.createElement('div');
             field.className = "single-firld";
             row.appendChild(field);
-            if (population[i][j] === 1) {
+            if (population[i][j].type === 1) {
                 field.className = "single-firld-one"
             }
-            else if (population[i][j] === 2) {
+            else if (population[i][j].type === 2) {
                 field.className = "single-firld-two"
             }
         }
