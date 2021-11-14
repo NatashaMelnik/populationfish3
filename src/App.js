@@ -10,13 +10,13 @@ function App() {
 
   const [x, setX] = useState(100);
   const [y, setY] = useState(100);
-  const [karasCount, setKarasCount] = useState(5000);
+  const [karasCount, setKarasCount] = useState(7000);
   const [karasOld, setKarasOld] = useState(3);
   const [karasReproduct, setKarasReproduct] = useState(3);
   const [shchukaCount, setShchukaCount] = useState(200);
   const [shchukaOld, setShchukaOld] = useState(9);
   const [shchukaReproduct, setShchukaReproduct] = useState(9);
-  const [shchukaDied, setShchukaDied] = useState(4);
+  const [shchukaDied, setShchukaDied] = useState(5);
 
   const onChangeX = (event) => {
     setX(event.target.value);
@@ -56,19 +56,15 @@ function App() {
 
   const [day, setDay] = useState(1);
 
-  const [population, setPopulation] = useState(createPopulation(x, y, karasCount, shchukaCount));
+  const [population, setPopulation] = useState(createPopulation(x, y, karasCount, shchukaCount, karasReproduct, shchukaReproduct));
 
   const nextDay = () => {
     setDay(day + 1);
-    console.log(population);
-    const temp = passDay(population);
-    setPopulation(temp);
+    console.log('__________');
+    const temp = passDay(population, karasReproduct, shchukaReproduct, shchukaDied);
   }
 
   Field(x, y, population);
-
-
-
 
 
   return (

@@ -1,4 +1,4 @@
-export const createPopulation = (x, y, karasCount, shchukaCount) => {
+export const createPopulation = (x, y, karasCount, shchukaCount, karasReproduct, shchukaReproduct) => {
     let population = [];
     for (let i = 0; i < y; i++) {
         population[i] = [];
@@ -11,7 +11,7 @@ export const createPopulation = (x, y, karasCount, shchukaCount) => {
             let xK = getRandomInt(1, x);
             let yK = getRandomInt(1, y);
             if (population[xK - 1][yK - 1] !== 0 || population[xK - 1][yK - 1] !== 2) {
-                population[xK - 1][yK - 1] = { type: 1, age: 0, preg: 0 };
+                population[xK - 1][yK - 1] = { type: 1, age: getRandomInt(1, karasReproduct), preg: 0 };
                 return;
             }
             else {
@@ -25,7 +25,7 @@ export const createPopulation = (x, y, karasCount, shchukaCount) => {
             let xK = getRandomInt(1, x);
             let yK = getRandomInt(1, y);
             if (population[xK - 1][yK - 1] !== 0 || population[xK - 1][yK - 1] !== 1) {
-                population[xK - 1][yK - 1] = { type: 2, age: 0, preg: 0 };
+                population[xK - 1][yK - 1] = { type: 2, age: getRandomInt(1, shchukaReproduct), preg: 0, hungry: 0 };
                 return;
             }
             else {
