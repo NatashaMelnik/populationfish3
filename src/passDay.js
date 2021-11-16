@@ -1,16 +1,6 @@
 export const passDay = (population, karasReproduct, shchukaReproduct, shchukaDied) => {
     const maxI = population.length;
     const maxJ = population[0].length;
-    let fich = 0;
-    for (let i = 0; i < population.length; i++) {
-        for (let j = 0; j < population[i].length; j++) {
-            if (population[i][j].type === 1) {
-                fich++;
-            }
-
-        }
-    }
-    console.log('was ' + fich)
     for (let i = 0; i < population.length; i++) {
         for (let j = 0; j < population[i].length; j++) {
             if (population[i][j].type === 1) {
@@ -46,7 +36,7 @@ export const passDay = (population, karasReproduct, shchukaReproduct, shchukaDie
             } else if (population[i][j].type === 2) {
                 population[i][j].age = population[i][j].age + 1;
                 population[i][j].preg = population[i][j].preg + 1;
-                for (let t = 0; t < 4; t++) {
+                for (let t = 0; t < 16; t++) {
                     let mI = getFreeField(population, i, j, maxI, maxJ)[0];
                     let mJ = getFreeField(population, i, j, maxI, maxJ)[1];
                     if (population[mI][mJ].type === 1) {
@@ -73,6 +63,7 @@ export const passDay = (population, karasReproduct, shchukaReproduct, shchukaDie
                         break;
                     }
                     if (t === 15) {
+                        console.log('died')
                         population[i][j].hungry = population[i][j].hungry + 1;
                         if (population[i][j].hungry >= shchukaDied) {
                             population[i][j].type = 0;
@@ -83,20 +74,6 @@ export const passDay = (population, karasReproduct, shchukaReproduct, shchukaDie
             }
         }
     }
-    fich = 0;
-    let ev = 0;
-    for (let i = 0; i < population.length; i++) {
-        for (let j = 0; j < population[i].length; j++) {
-            if (population[i][j].type === 1) {
-                fich++;
-            }
-            if (population[i][j].type === 2) {
-                ev++;
-            }
-        }
-    }
-    console.log(fich)
-    console.log(ev)
 }
 
 function getDirection() {

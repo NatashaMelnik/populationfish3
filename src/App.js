@@ -60,7 +60,6 @@ function App() {
 
   const nextDay = () => {
     setDay(day + 1);
-    console.log('__________');
     const temp = passDay(population, karasReproduct, shchukaReproduct, shchukaDied);
   }
 
